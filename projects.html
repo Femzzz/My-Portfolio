@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labs & Projects | Adegoke Femi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        editor: {
+                            bg: '#0d0f12',
+                            surface: '#14171c',
+                            surfaceHover: '#1a1e24',
+                            border: '#22262e',
+                            accent: '#6366f1',
+                            accentHover: '#818cf8',
+                            muted: '#8b949e',
+                            text: '#e6edf3'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-editor-bg text-editor-text font-sans antialiased selection:bg-editor-accent/30 selection:text-indigo-200 min-h-screen flex flex-col justify-between">
+
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-editor-bg/90 backdrop-blur-md border-b border-editor-border">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-2.5 group">
+                <span class="w-2.5 h-2.5 rounded-full bg-editor-accent group-hover:animate-pulse"></span>
+                <span class="font-mono text-sm font-semibold tracking-tight text-white">~/adegoke-femi</span>
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-1 font-mono text-xs">
+                <a href="index.html" class="px-3 py-1.5 rounded text-editor-muted hover:text-white hover:bg-editor-surface/60 transition">01_home.sh</a>
+                <a href="projects.html" class="px-3 py-1.5 rounded bg-editor-surface text-white border border-editor-border">02_projects.yml</a>
+                <a href="writeups.html" class="px-3 py-1.5 rounded text-editor-muted hover:text-white hover:bg-editor-surface/60 transition">03_writeups.md</a>
+                <a href="contact.html" class="px-3 py-1.5 rounded text-editor-muted hover:text-white hover:bg-editor-surface/60 transition">04_contact.json</a>
+            </nav>
+
+            <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2 rounded text-editor-muted hover:text-white hover:bg-editor-surface border border-transparent hover:border-editor-border transition">
+                <svg id="icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                <svg id="icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden border-b border-editor-border bg-editor-surface px-4 pt-2 pb-4 space-y-1 font-mono text-xs">
+            <a href="index.html" class="block px-3 py-2 rounded text-editor-muted hover:text-white hover:bg-editor-bg/50">01_home.sh</a>
+            <a href="projects.html" class="block px-3 py-2 rounded bg-editor-bg text-white border border-editor-border">02_projects.yml</a>
+            <a href="writeups.html" class="block px-3 py-2 rounded text-editor-muted hover:text-white hover:bg-editor-bg/50">03_writeups.md</a>
+            <a href="contact.html" class="block px-3 py-2 rounded text-editor-muted hover:text-white hover:bg-editor-bg/50">04_contact.json</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl w-full mx-auto px-4 sm:px-6 py-12 sm:py-16 space-y-10">
+
+        <!-- Header & Filter Bar -->
+        <div class="space-y-4 border-b border-editor-border pb-6">
+            <div class="font-mono text-xs text-editor-accent">cat ./repositories/projects.yml</div>
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                <div>
+                    <h1 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Security Labs &amp; Engineering</h1>
+                    <p class="text-sm text-editor-muted mt-1">Hands-on infrastructure builds, defensive automation scripts, and homelab telemetry deployments.</p>
+                </div>
+
+                <!-- Interactive Filter Buttons -->
+                <div class="flex flex-wrap gap-1.5 font-mono text-xs" id="filter-container">
+                    <button data-filter="all" class="filter-btn px-3 py-1.5 rounded bg-editor-accent text-white transition">All (4)</button>
+                    <button data-filter="linux" class="filter-btn px-3 py-1.5 rounded bg-editor-surface text-editor-muted hover:text-white border border-editor-border transition">Linux/Bash</button>
+                    <button data-filter="cloud" class="filter-btn px-3 py-1.5 rounded bg-editor-surface text-editor-muted hover:text-white border border-editor-border transition">Cloud/CI-CD</button>
+                    <button data-filter="siem" class="filter-btn px-3 py-1.5 rounded bg-editor-surface text-editor-muted hover:text-white border border-editor-border transition">SIEM/SOC</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="projects-grid">
+
+            <!-- Project Card 1 -->
+            <article data-category="linux" class="project-card flex flex-col justify-between rounded-lg border border-editor-border bg-editor-surface p-6 hover:border-zinc-600 transition">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between font-mono text-xs">
+                        <span class="text-emerald-400">● DEPLOYED_LAB</span>
+                        <span class="text-editor-muted">ID: SEC-01</span>
+                    </div>
+
+                    <h2 class="text-lg font-semibold text-white">Debian Server Hardening &amp; Baseline Suite</h2>
+
+                    <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+                        <span class="px-2 py-0.5 rounded bg-editor-bg text-zinc-300 border border-editor-border">Debian Linux</span>
+                        <span class="px-2 py-0.5 rounded bg-editor-bg text-zinc-300 border border-editor-border">Bash</span>
+                        <span class="px-2 py-0.5 rounded bg-editor-bg text-zinc-300 border border-editor-border">UFW / Fail2Ban</span>
+                        <span class="px-2 py-0.5 rounded bg-editor-bg text-zinc-300 border border-editor-border">sysctl</span>
+                    </div>
+
+                    <div class="space-y-1.5 pt-1">
+                        <div class="font-mono text-[11px] uppercase tracking-wider text-editor-muted">Methodology:</div>
+                        <p class="text-xs sm:text-sm text-editor-muted leading-relaxed">
+                            Engineered an idempotent Bash provisioning suite aligned with CIS Debian Benchmark controls. Enforces key-only SSH on custom ports, configures strict UFW egress/ingress rules, applies kernel network stack hardening via <code class="text-zinc-300 font-mono">sysctl.conf</code>, and enables automated security patching.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="pt-6 mt-6 border-t border-editor-border flex items-center justify-between font-mono text-xs">
+                    <a href="https://github.com/Femzzz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-white hover:text-editor-accentHover transition">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                        <span>View Repository</span>
+                    </a>
+                    <span class="text-editor-muted">v1.4.0</span>
+                </div>
+            </article>
+
+            <!-- Project Card 2 -->
+            <article data-category="linux" class="project-card flex flex-col justify-between rounded-lg border border-editor-border bg-editor-surface p-6 hover:border-zinc-600 transition">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between font-mono text-xs">
+                        <span class="text-emerald-400">● DEPLOYED_LAB</span>
+                        <span class="text-editor-muted">ID: SEC-02</span>
+                    </div>
+
+                    <h2 class="text-lg font-semibold text-white">Automated Bash Security &amp; Drift Auditor</h2>
+
+                    <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+                        <span class="px-2 py-0.5 rounded bg-editor-bg text-zinc-300 border border-editor-border">Bash</span>
+                        <span class="px-2 py-0.5 rounded bg-editor-bg text-zinc-300 border border-editor-border">Linux Auditd</span>
+                        <span class="px-2 py-0.5 rounded bg-editor-bg text-zinc-300 border border-editor-border">Cron</span>
+                        <span class="px-2 py-0.5 rounded bg-editor-bg text-zinc-300 border border-editor-border">JSON Logging</span>
+                    </div>
+
+                    <div class="space-y-1.5 pt-1">
+                        <div class="font-mono text-[11px] uppercase tracking-wider text-editor-muted">Methodology:</div>
+                        <p class="text-xs sm:text-sm text-editor-muted leading-relaxed">
+                            Built a zero-dependency reconnaissance and compliance audit script that scans for SUID/SGID anomalies, world-writable configurations, unauthorized listening sockets, and `/etc/passwd` modifications. Outputs structured JSON reports ready for SIEM ingestion.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="pt-6 mt-6 border-t border-editor-border flex items-center justify-between font-mono text-xs">
+                    <a href="https://github.com/Femzzz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-white hover:text-editor-accentHover transition">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                        <span>View Repository</span>
+                    </a>
+                    <span class="text-editor-muted">v2.1.0</span>
+                </div>
+            </article>
+
+            <!-- Project Card 3 -->
+            <article data-category="siem" class="project-card flex flex-col justify-between rounded-lg border border-editor-border bg-editor-surface p-6 hover:border-zinc-600 transition">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between font-mono text-xs">
+                        <span class="text-sky-400">● HOMELAB_SOC</span>
+                        <span class="text-editor-muted">ID: SEC-03</span>
+                    </div>
+
+                    <h2 class="text-lg font-semibold text-white">Enterprise Home SIEM &amp; XDR Telemetry Lab</h2>
+
+                    <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+                        <span class="px-2 py-0.5 rounded bg-editor-bg text-zinc-300 border border-editor-border">Wazuh SIEM</span>
+                        <span class="px-2 py-0.5 rounded bg-editor-bg text-zinc-300 border border-editor-border">Suricata NIDS</span>
+                        <span class="px-2 py-0.5 rounded bg-editor-bg text-zinc-300 border border-editor-border">pfSense</span>
+                        <span class="px-2 py-0.5 rounded bg-editor-bg text-zinc-300 border border-editor-border">Sysmon</span>
+                    </div>
+
+                    <div class="space-y-1.5 pt-1">
+                        <div class="font-mono text-[11px] uppercase tracking-wider text-editor-muted">Methodology:</div>
+                        <p class="text-xs sm:text-sm text-editor-muted leading-relaxed">
+                            Architected a virtualized SOC pipeline integrating pfSense perimeter logs, Suricata network intrusion rules, and endpoint Sysmon telemetry into a central Wazuh manager. Configured custom XML decoders and active-response rules to block brute-force IPs automatically.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="pt-6 mt-6 border-t border-editor-border flex items-center justify-between font-mono text-xs">
+                    <a href="https://github.com/Femzzz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-white hover:text-editor-accentHover transition">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                        <span>View Repository</span>
+                    </a>
+                    <span class="text-editor-muted">v1.0.2</span>
+                </div>
+            </article>
+
+            <!-- Project Card 4 -->
+            <article data-category="cloud" class="project-card flex flex-col justify-between rounded-lg border border-editor-border bg-editor-surface p-6 hover:border-zinc-600 transition">
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between font-mono text-xs">
+                        <span class="text-amber-400">● PIPELINE_TOOL</span>
+                        <span class="text-editor-muted">ID: SEC-04</span>
+                    </div>
+
+                    <h2 class="text-lg font-semibold text-white">Python Cloud Posture &amp; CI/CD Secret Gatekeeper</h2>
+
+                    <div class="flex flex-wrap gap-1.5 font-mono text-[11px]">
+                        <span class="px-2 py-0.5 rounded bg-editor-bg text-zinc-300 border border-editor-border">Python 3</span>
+                        <span class="px-2 py-0.5 rounded bg-editor-bg text-zinc-300 border border-editor-border">GitHub Actions</span>
+                        <span class="px-2 py-0.5 rounded bg-editor-bg text-zinc-300 border border-editor-border">Boto3 / Cloud API</span>
+                        <span class="px-2 py-0.5 rounded bg-editor-bg text-zinc-300 border border-editor-border">Docker</span>
+                    </div>
+
+                    <div class="space-y-1.5 pt-1">
+                        <div class="font-mono text-[11px] uppercase tracking-wider text-editor-muted">Methodology:</div>
+                        <p class="text-xs sm:text-sm text-editor-muted leading-relaxed">
+                            Developed a lightweight Python CLI tool integrated into GitHub Actions that evaluates cloud security groups for overly permissive CIDR blocks (`0.0.0.0/0`), checks storage bucket encryption states, and halts pull requests containing high-entropy API secrets.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="pt-6 mt-6 border-t border-editor-border flex items-center justify-between font-mono text-xs">
+                    <a href="https://github.com/Femzzz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-white hover:text-editor-accentHover transition">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                        <span>View Repository</span>
+                    </a>
+                    <span class="text-editor-muted">v0.9.5</span>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- IDE Status Bar Footer -->
+    <footer class="border-t border-editor-border bg-[#0a0c0e] font-mono text-[11px] text-editor-muted">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 h-9 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <span class="flex items-center gap-1.5 text-white">
+                    <svg class="w-3.5 h-3.5 text-editor-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    main*
+                </span>
+                <span class="hidden sm:inline">YAML</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span>4 entries indexed</span>
+                <span class="text-emerald-400">● Status: Ready</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const iconOpen = document.getElementById('icon-open');
+        const iconClose = document.getElementById('icon-close');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            iconOpen.classList.toggle('hidden');
+            iconClose.classList.toggle('hidden');
+        });
+
+        // Category Filter Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(button => {
+            button.addEventListener('click', () => {
+                const target = button.getAttribute('data-filter');
+
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-editor-accent', 'text-white');
+                    b.classList.add('bg-editor-surface', 'text-editor-muted');
+                });
+                button.classList.add('bg-editor-accent', 'text-white');
+                button.classList.remove('bg-editor-surface', 'text-editor-muted');
+
+                cards.forEach(card => {
+                    if (target === 'all' || card.getAttribute('data-category') === target) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

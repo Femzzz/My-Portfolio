@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write-ups & Case Studies | Adegoke Femi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        editor: {
+                            bg: '#0d0f12',
+                            surface: '#14171c',
+                            surfaceHover: '#1a1e24',
+                            border: '#22262e',
+                            accent: '#6366f1',
+                            accentHover: '#818cf8',
+                            muted: '#8b949e',
+                            text: '#e6edf3'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-editor-bg text-editor-text font-sans antialiased selection:bg-editor-accent/30 selection:text-indigo-200 min-h-screen flex flex-col justify-between">
+
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-editor-bg/90 backdrop-blur-md border-b border-editor-border">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-2.5 group">
+                <span class="w-2.5 h-2.5 rounded-full bg-editor-accent group-hover:animate-pulse"></span>
+                <span class="font-mono text-sm font-semibold tracking-tight text-white">~/adegoke-femi</span>
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-1 font-mono text-xs">
+                <a href="index.html" class="px-3 py-1.5 rounded text-editor-muted hover:text-white hover:bg-editor-surface/60 transition">01_home.sh</a>
+                <a href="projects.html" class="px-3 py-1.5 rounded text-editor-muted hover:text-white hover:bg-editor-surface/60 transition">02_projects.yml</a>
+                <a href="writeups.html" class="px-3 py-1.5 rounded bg-editor-surface text-white border border-editor-border">03_writeups.md</a>
+                <a href="contact.html" class="px-3 py-1.5 rounded text-editor-muted hover:text-white hover:bg-editor-surface/60 transition">04_contact.json</a>
+            </nav>
+
+            <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2 rounded text-editor-muted hover:text-white hover:bg-editor-surface border border-transparent hover:border-editor-border transition">
+                <svg id="icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                <svg id="icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden border-b border-editor-border bg-editor-surface px-4 pt-2 pb-4 space-y-1 font-mono text-xs">
+            <a href="index.html" class="block px-3 py-2 rounded text-editor-muted hover:text-white hover:bg-editor-bg/50">01_home.sh</a>
+            <a href="projects.html" class="block px-3 py-2 rounded text-editor-muted hover:text-white hover:bg-editor-bg/50">02_projects.yml</a>
+            <a href="writeups.html" class="block px-3 py-2 rounded bg-editor-bg text-white border border-editor-border">03_writeups.md</a>
+            <a href="contact.html" class="block px-3 py-2 rounded text-editor-muted hover:text-white hover:bg-editor-bg/50">04_contact.json</a>
+        </div>
+    </header>
+
+    <!-- Main Content (Obsidian Vault Split View) -->
+    <main class="max-w-5xl w-full mx-auto px-4 sm:px-6 py-12 sm:py-16 space-y-12">
+
+        <!-- Page Heading -->
+        <div class="space-y-2 border-b border-editor-border pb-6">
+            <div class="font-mono text-xs text-editor-accent">vault://security-notes/writeups.md</div>
+            <h1 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Technical Write-ups &amp; Incident Reports</h1>
+            <p class="text-sm text-editor-muted">Documentation on homelab SOC architecture, vulnerability analysis, and CTF walkthroughs.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+            <!-- Left Column: Recent Notes / Index -->
+            <aside class="lg:col-span-4 space-y-3">
+                <div class="font-mono text-xs uppercase tracking-wider text-editor-muted px-1">Recent_Entries</div>
+
+                <a href="#featured-post" class="block p-4 rounded-lg border border-editor-accent/60 bg-editor-surface transition">
+                    <div class="flex items-center justify-between font-mono text-[11px] text-editor-accent mb-1">
+                        <span>SOC_ARCHITECTURE</span>
+                        <span>Oct 2026</span>
+                    </div>
+                    <h3 class="text-sm font-semibold text-white">Building a Full Home SIEM Pipeline with Wazuh, Suricata &amp; pfSense</h3>
+                    <p class="text-xs text-editor-muted mt-1 line-clamp-2">End-to-end telemetry ingestion, custom Sysmon rule creation, and active-response tuning.</p>
+                </a>
+
+                <div class="p-4 rounded-lg border border-editor-border bg-editor-surface/60 hover:border-zinc-600 transition">
+                    <div class="flex items-center justify-between font-mono text-[11px] text-emerald-400 mb-1">
+                        <span>LINUX_HARDENING</span>
+                        <span>Sep 2026</span>
+                    </div>
+                    <h3 class="text-sm font-semibold text-white">Mitigating Privilege Escalation Vectors on Multi-User Debian Hosts</h3>
+                    <p class="text-xs text-editor-muted mt-1">Auditing SUID binaries, capabilities, and restricting `/proc` visibility via `hidepid`.</p>
+                </div>
+
+                <div class="p-4 rounded-lg border border-editor-border bg-editor-surface/60 hover:border-zinc-600 transition">
+                    <div class="flex items-center justify-between font-mono text-[11px] text-amber-400 mb-1">
+                        <span>CTF_WALKTHROUGH</span>
+                        <span>Jul 2026</span>
+                    </div>
+                    <h3 class="text-sm font-semibold text-white">TryHackMe Pre-Security &amp; Network Fundamentals Lab Notes</h3>
+                    <p class="text-xs text-editor-muted mt-1">Packet inspection, OSI layer troubleshooting, and Linux command-line enumeration.</p>
+                </div>
+            </aside>
+
+            <!-- Right Column: Featured Markdown Reader View -->
+            <article id="featured-post" class="lg:col-span-8 rounded-lg border border-editor-border bg-editor-surface p-6 sm:p-8 space-y-6">
+                <div class="border-b border-editor-border pb-5 space-y-3">
+                    <div class="flex flex-wrap items-center gap-2 font-mono text-xs text-editor-muted">
+                        <span class="px-2 py-0.5 rounded bg-editor-bg text-editor-accent border border-editor-border">CASE_STUDY</span>
+                        <span>•</span>
+                        <span>2026-10-18</span>
+                        <span>•</span>
+                        <span>6 min read</span>
+                    </div>
+                    <h2 class="text-xl sm:text-2xl font-bold text-white leading-snug">
+                        Building a Full Home SIEM Pipeline: Correlating Suricata NIDS &amp; Sysmon Telemetry in Wazuh
+                    </h2>
+                </div>
+
+                <!-- Prose Body -->
+                <div class="space-y-4 text-sm sm:text-base text-zinc-300 leading-relaxed">
+                    <p>
+                        Modern security operations rely on visibility across both the network perimeter and individual host endpoints. In this lab write-up, we walk through architecting an isolated enterprise SOC simulation capable of detecting lateral movement and automated brute-force attacks in real time.
+                    </p>
+
+                    <h3 class="font-mono text-sm font-semibold text-white uppercase tracking-wider pt-2">1. Telemetry Architecture</h3>
+                    <p>
+                        The environment is segmented behind a <strong>pfSense</strong> perimeter firewall. Network traffic traversing the LAN interface is mirrored to <strong>Suricata</strong> operating in NIDS mode, while endpoint process creation and registry modifications are captured via <strong>Sysmon</strong> and forwarded through the Wazuh agent.
+                    </p>
+
+                    <!-- Code Block -->
+                    <div class="rounded-md border border-editor-border bg-[#0a0c0e] p-4 font-mono text-xs overflow-x-auto">
+                        <div class="text-editor-muted mb-2"># /var/ossec/etc/ossec.conf — Suricata JSON ingestion</div>
+                        <pre class="text-zinc-200"><code>&lt;localfile&gt;
+  &lt;log_format&gt;json&lt;/log_format&gt;
+  &lt;location&gt;/var/log/suricata/eve.json&lt;/location&gt;
+&lt;/localfile&gt;</code></pre>
+                    </div>
+
+                    <h3 class="font-mono text-sm font-semibold text-white uppercase tracking-wider pt-2">2. Detection Engineering &amp; Takeaways</h3>
+                    <p>
+                        By correlating Suricata's <code class="font-mono text-xs bg-editor-bg px-1.5 py-0.5 rounded border border-editor-border text-indigo-300">eve.json</code> alerts with Sysmon Event ID 1 (Process Creation), noisy network scans are separated from genuine exploitation attempts—reducing false-positive alert fatigue while maintaining sub-second response triggers.
+                    </p>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- IDE Status Bar Footer -->
+    <footer class="border-t border-editor-border bg-[#0a0c0e] font-mono text-[11px] text-editor-muted">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 h-9 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <span class="flex items-center gap-1.5 text-white">
+                    <svg class="w-3.5 h-3.5 text-editor-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    main*
+                </span>
+                <span class="hidden sm:inline">Markdown</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span>Ln 42, Col 18</span>
+                <span class="text-emerald-400">● Status: Ready</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const iconOpen = document.getElementById('icon-open');
+        const iconClose = document.getElementById('icon-close');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            iconOpen.classList.toggle('hidden');
+            iconClose.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Adegoke Femi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        editor: {
+                            bg: '#0d0f12',
+                            surface: '#14171c',
+                            surfaceHover: '#1a1e24',
+                            border: '#22262e',
+                            accent: '#6366f1',
+                            accentHover: '#818cf8',
+                            muted: '#8b949e',
+                            text: '#e6edf3'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-editor-bg text-editor-text font-sans antialiased selection:bg-editor-accent/30 selection:text-indigo-200 min-h-screen flex flex-col justify-between">
+
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-editor-bg/90 backdrop-blur-md border-b border-editor-border">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-2.5 group">
+                <span class="w-2.5 h-2.5 rounded-full bg-editor-accent group-hover:animate-pulse"></span>
+                <span class="font-mono text-sm font-semibold tracking-tight text-white">~/adegoke-femi</span>
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-1 font-mono text-xs">
+                <a href="index.html" class="px-3 py-1.5 rounded text-editor-muted hover:text-white hover:bg-editor-surface/60 transition">01_home.sh</a>
+                <a href="projects.html" class="px-3 py-1.5 rounded text-editor-muted hover:text-white hover:bg-editor-surface/60 transition">02_projects.yml</a>
+                <a href="writeups.html" class="px-3 py-1.5 rounded text-editor-muted hover:text-white hover:bg-editor-surface/60 transition">03_writeups.md</a>
+                <a href="contact.html" class="px-3 py-1.5 rounded bg-editor-surface text-white border border-editor-border">04_contact.json</a>
+            </nav>
+
+            <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2 rounded text-editor-muted hover:text-white hover:bg-editor-surface border border-transparent hover:border-editor-border transition">
+                <svg id="icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                <svg id="icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden border-b border-editor-border bg-editor-surface px-4 pt-2 pb-4 space-y-1 font-mono text-xs">
+            <a href="index.html" class="block px-3 py-2 rounded text-editor-muted hover:text-white hover:bg-editor-bg/50">01_home.sh</a>
+            <a href="projects.html" class="block px-3 py-2 rounded text-editor-muted hover:text-white hover:bg-editor-bg/50">02_projects.yml</a>
+            <a href="writeups.html" class="block px-3 py-2 rounded text-editor-muted hover:text-white hover:bg-editor-bg/50">03_writeups.md</a>
+            <a href="contact.html" class="block px-3 py-2 rounded bg-editor-bg text-white border border-editor-border">04_contact.json</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-3xl w-full mx-auto px-4 sm:px-6 py-12 sm:py-20 space-y-10">
+
+        <div class="space-y-2">
+            <div class="font-mono text-xs text-editor-accent">cat ./endpoints/contact.json</div>
+            <h1 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Initiate Connection</h1>
+            <p class="text-sm text-editor-muted">Open to Cloud Security internships, DevSecOps collaborations, and technical discussions.</p>
+        </div>
+
+        <!-- Contact Channels Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono text-xs">
+
+            <!-- GitHub -->
+            <a href="https://github.com/Femzzz" target="_blank" rel="noopener noreferrer" class="p-5 rounded-lg border border-editor-border bg-editor-surface hover:border-zinc-500 transition flex items-center justify-between group">
+                <div class="space-y-1">
+                    <div class="text-editor-muted text-[11px]">GITHUB_REPO</div>
+                    <div class="text-white font-semibold text-sm group-hover:text-editor-accentHover transition">github.com/Femzzz</div>
+                </div>
+                <span class="text-editor-muted group-hover:translate-x-0.5 transition">↗</span>
+            </a>
+
+            <!-- X (Twitter) -->
+            <a href="https://x.com/" target="_blank" rel="noopener noreferrer" class="p-5 rounded-lg border border-editor-border bg-editor-surface hover:border-zinc-500 transition flex items-center justify-between group">
+                <div class="space-y-1">
+                    <div class="text-editor-muted text-[11px]">X_PROFILE</div>
+                    <div class="text-white font-semibold text-sm group-hover:text-editor-accentHover transition">@adegoke_femi</div>
+                </div>
+                <span class="text-editor-muted group-hover:translate-x-0.5 transition">↗</span>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="p-5 rounded-lg border border-editor-border bg-editor-surface hover:border-zinc-500 transition flex items-center justify-between group">
+                <div class="space-y-1">
+                    <div class="text-editor-muted text-[11px]">LINKEDIN</div>
+                    <div class="text-white font-semibold text-sm group-hover:text-editor-accentHover transition">in/adegoke-femi</div>
+                </div>
+                <span class="text-editor-muted group-hover:translate-x-0.5 transition">↗</span>
+            </a>
+
+            <!-- Direct Email (with Copy Button) -->
+            <div class="p-5 rounded-lg border border-editor-border bg-editor-surface flex items-center justify-between">
+                <div class="space-y-1 truncate pr-2">
+                    <div class="text-editor-muted text-[11px]">DIRECT_EMAIL</div>
+                    <a href="mailto:femi@example.com" id="email-text" class="text-white font-semibold text-sm hover:text-editor-accentHover transition">femi@example.com</a>
+                </div>
+                <button id="copy-email-btn" class="px-2.5 py-1 rounded bg-editor-bg hover:bg-editor-surfaceHover text-editor-muted hover:text-white border border-editor-border text-[11px] transition shrink-0">
+                    Copy
+                </button>
+            </div>
+        </div>
+
+        <!-- Resume Download Card -->
+        <div class="p-6 rounded-lg border border-editor-border bg-editor-surface flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="space-y-1">
+                <div class="font-mono text-xs text-emerald-400">ARTIFACT_READY // PDF</div>
+                <h2 class="text-base font-semibold text-white">Curriculum Vitae &amp; Technical Resume</h2>
+                <p class="text-xs text-editor-muted">Includes coursework, Cloud Security lab architecture, and technical proficiencies.</p>
+            </div>
+            <a href="resume.pdf" download class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-md bg-editor-accent hover:bg-editor-accentHover text-white font-mono text-xs font-medium transition shrink-0">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                <span>Download_CV.pdf</span>
+            </a>
+        </div>
+
+    </main>
+
+    <!-- IDE Status Bar Footer -->
+    <footer class="border-t border-editor-border bg-[#0a0c0e] font-mono text-[11px] text-editor-muted">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 h-9 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <span class="flex items-center gap-1.5 text-white">
+                    <svg class="w-3.5 h-3.5 text-editor-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    main*
+                </span>
+                <span class="hidden sm:inline">JSON</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span>SSH: Port 22</span>
+                <span class="text-emerald-400">● Status: Ready</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const iconOpen = document.getElementById('icon-open');
+        const iconClose = document.getElementById('icon-close');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            iconOpen.classList.toggle('hidden');
+            iconClose.classList.toggle('hidden');
+        });
+
+        // Copy Email Interaction
+        const copyBtn = document.getElementById('copy-email-btn');
+        const emailText = document.getElementById('email-text').innerText;
+
+        copyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(emailText).then(() => {
+                copyBtn.innerText = 'Copied!';
+                copyBtn.classList.add('text-emerald-400', 'border-emerald-500/40');
+                setTimeout(() => {
+                    copyBtn.innerText = 'Copy';
+                    copyBtn.classList.remove('text-emerald-400', 'border-emerald-500/40');
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
